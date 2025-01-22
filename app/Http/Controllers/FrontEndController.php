@@ -33,7 +33,7 @@ class FrontEndController extends Controller
         //$users=User::active()->get();
        // $users=User::active()->orderBy('name','ASC')->get();
         //$users=User::active()->latest()->get();
-        $users=User::withTrashed()->active()->latest()->limit(10)->get();
+        $users=User::withTrashed()->active()->latest()->paginate(10);
         return view('home', compact('users'));
     }
 
