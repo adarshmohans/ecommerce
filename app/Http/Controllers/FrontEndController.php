@@ -28,12 +28,12 @@ class FrontEndController extends Controller
         //$user= User::where ('email', 'dubuque.mackenzie@example.com')->first();
         //$users= User::whereIn('id', [43, 23])->get();
         //return $user->dob;
-        //return $user->dob->format('d-M-Y');
+        //return $user->dob->format('d-M-Y'); 
         //return $user->name;
         //$users=User::active()->get();
        // $users=User::active()->orderBy('name','ASC')->get();
         //$users=User::active()->latest()->get();
-        $users=User::active()->latest()->limit(10)->get();
+        $users=User::withTrashed()->active()->latest()->limit(10)->get();
         return view('home', compact('users'));
     }
 
@@ -79,7 +79,20 @@ class FrontEndController extends Controller
     }
     public function delete($userId){
         $user= User::find(decrypt($userId));
+        //User::destroy(decrypt($userId));
         $user->delete();
         return redirect()->route('homemain')->with('message','User deleted successfully');
+    }
+
+    public function activate($userId){
+        $user= User::withTrashed()->find(decrypt($userId));
+        $user->restore();
+        return redirect()->route('homemain')->with('message','User Activated successfully');
+    }
+
+    public function ForceDelete($userId){
+        $user= User::find(decrypt($userId));
+        $user->forceDelete();
+        return redirect()->route('homemain')->with('message','User Force Deleted successfully');
     }
 }

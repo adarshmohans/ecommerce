@@ -23,3 +23,5 @@ Route::post('save-user', 'FrontEndController@save')->name('save.user');
 Route::get('edit-user/{userId}', 'FrontEndController@edit')->name('edit.user');
 Route::post('update-user', 'FrontEndController@update')->name('update.user');
 Route::get('delete-user/{userId}', 'FrontEndController@delete')->name('delete.user');
+Route::get('activate-user/{userId}', 'FrontEndController@activate')->name('activate.user');
+Route::get('force-delete-user/{userId}', 'FrontEndController@forceDelete')->name('force.delete.user');
