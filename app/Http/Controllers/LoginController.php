@@ -16,7 +16,7 @@ class LoginController
             'password' => request('password')
         ] ;
         if(auth()->attempt($input, true)){
-            return redirect()->route(('home'));
+            return redirect()->route('home');
         }else{
             return redirect()->route('login')->with('message', 'Login failed' );
         }
