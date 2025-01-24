@@ -5,6 +5,8 @@
 @if(session()->has('message'))
 <p>{{ session()->get('message') }}</p>
 @endif
+<h4>Welcome {{ auth()->user()->name }}</h4>
+<a href="{{route('logout')}}" class="btn btn-danger">Logout</a>
 <a href="{{route('users.create')}}" class="btn btn-primary">Add User</a>
 <table class="table">
     <thead>

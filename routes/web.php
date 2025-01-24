@@ -14,10 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'FrontEndController@homepage')->name('home');
+Route::get('/', 'LoginController@login')->name('login');
+Route::post('do-login', 'LoginController@doLogin')->name('do.login');
+Route::get('logout', 'LoginController@logout')->name('logout');
+Route::get('users', 'FrontEndController@home')->name('home');
 Route::get('about-us', 'FrontEndController@about')->name('about');
 Route::get('contact', 'FrontEndController@contact')->name('contact');
-Route::get('home', 'FrontEndController@home')->name('homemain');
+Route::get('home', 'FrontEndController@homepage')->name('homemain');
 Route::get('new-user', 'FrontEndController@create')->name('users.create');
 Route::post('save-user', 'FrontEndController@save')->name('save.user');
 Route::get('edit-user/{userId}', 'FrontEndController@edit')->name('edit.user');

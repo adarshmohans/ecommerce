@@ -20,6 +20,7 @@ class UserFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
+            'password' => bcrypt('captainamerica'),
             'dob' => $this->faker->date($format = 'Y-m-d', $max = 'now'),
             'status' =>rand(1,0),
         ];
