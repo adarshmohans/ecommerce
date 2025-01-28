@@ -65,6 +65,10 @@ class FrontEndController extends Controller
         $user= User::find(decrypt($userId));
         return view('users.edit', compact('user'));
     }
+    public function view($userId){
+        $user= User::find(decrypt($userId));
+        return view('users.view', compact('user'));
+    }
 
     public function update(){
         $userId= decrypt(request('id'));

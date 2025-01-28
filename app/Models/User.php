@@ -35,6 +35,9 @@ class User extends Authenticatable
         return $query->where('status',1);
     }
 
+    public function address(){
+        return $this->hasOne(UserAddress::class, 'user_id', 'id');
+    }
 
     /**
      * The attributes that are mass assignable.

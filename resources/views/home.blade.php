@@ -27,6 +27,7 @@
             <td>@if($user->trashed()) Trashed @else Active @endif</td>
             <td>
                 @if($user->trashed()) <a href="{{ route('activate.user', encrypt($user->id)) }}" class="btn btn-sm btn-success">Activate</a>@endif
+                <a href="{{ route('view.user', encrypt($user->id)) }}" class="btn btn-sm btn-warning">View</a>
                 <a href="{{ route('edit.user', encrypt($user->id)) }}" class="btn btn-primary">Edit</a>
                 <a href="{{ route('delete.user', encrypt($user->id)) }}" class="btn btn-danger">Delete</a>
                 <a href="{{ route('force.delete.user', encrypt($user->id)) }}" class="btn btn-info">Force Delete</a>
