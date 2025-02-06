@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\UserCreatedMail;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class FrontEndController extends Controller
 {
@@ -51,13 +53,16 @@ class FrontEndController extends Controller
         // ]);
         // return redirect()->route('home');
 
-       User::firstOrCreate([
+       $user=User::firstOrCreate([
             'email' => request('email')
         ],[
             'name' => request('name'),
             'dob' => request('dob'),
             'status' => request('status'),
         ]);
+
+        Mail::to('adarshpscexam@gmail.com')->send(new UserCreatedMail($user));
+
         return redirect()->route('homemain')->with('message','User created successfully');
     }
 
