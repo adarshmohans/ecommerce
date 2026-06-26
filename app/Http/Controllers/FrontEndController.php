@@ -53,6 +53,12 @@ class FrontEndController extends Controller
         // ]);
         // return redirect()->route('home');
 
+        request()->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'dob' => 'required',
+        ]);
+
        $user=User::firstOrCreate([
             'email' => request('email')
         ],[
